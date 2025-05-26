@@ -11,7 +11,7 @@ The program will be compiled in the 'bin' folder
 
 ## How to Run
 ```
-./TSP
+./TSP or bin/TSP
 ```
 
 The program will ask the user to input a .txt file that contains the TSP problem in the form of adjacency matrix.
