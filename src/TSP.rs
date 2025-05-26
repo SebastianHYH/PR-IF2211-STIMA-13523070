@@ -22,6 +22,14 @@ fn read_graph_from_file(filename: &str) -> io::Result<Vec<Vec<i32>>> {
         graph.push(row);
     }
 
+    for i in 0..n {
+        for j in 0..n {
+            if i != j && graph[i][j] == 0 {
+                graph[i][j] = INF;
+            }
+        }
+    }
+
     Ok(graph)
 }
 
@@ -74,7 +82,14 @@ fn main() {
         Ok(graph) => {
             println!("Adjacency Matrix:");
             for row in &graph {
-                println!("{:?}", row);
+                let formatted_row: Vec<String> = row.iter().map(|&val| {
+                    if val == INF {
+                        "-".to_string()
+                    } else {
+                        val.to_string()
+                    }
+                }).collect();
+                println!("[{}]", formatted_row.join(", "));
             }
 
             let cost = tsp(graph);
